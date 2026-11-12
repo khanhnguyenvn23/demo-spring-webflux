@@ -71,7 +71,7 @@ python .\load_test.py --requests 240 --concurrency 240
 
 Công cụ gửi cùng số request lần lượt đến MVC `/api/demo/blocking` và WebFlux `/api/demo/non-blocking`, sau đó in số request thành công, tổng thời gian và thời gian phản hồi trung bình/lâu nhất. Cả hai endpoint đều chờ khoảng 5 giây; MVC dùng `Thread.sleep`, còn WebFlux dùng luồng reactive.
 
-Thử tải nhẹ trước bằng `--requests 40 --concurrency 20`. Giá trị tối đa được giới hạn ở 300 request và 250 request đồng thời; script chỉ gọi hai địa chỉ `localhost` đã cấu hình sẵn. Đây là demo so sánh trong môi trường local, không phải công cụ benchmark tổng quát. Kết quả phụ thuộc máy và cấu hình; WebFlux vẫn bị giới hạn bởi tài nguyên, event loop và connection pool.
+Thử tải nhẹ trước bằng `--requests 40 --concurrency 20`. Giá trị tối đa được giới hạn ở 600 request và 600 request đồng thời; script chỉ gọi hai địa chỉ `localhost` đã cấu hình sẵn. Tăng tải từ từ để tránh làm máy quá tải. Đây là demo so sánh trong môi trường local, không phải công cụ benchmark tổng quát. Kết quả phụ thuộc máy và cấu hình; WebFlux vẫn bị giới hạn bởi tài nguyên, event loop và connection pool.
 
 ## Ý nghĩa và lưu ý
 

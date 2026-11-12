@@ -9,6 +9,8 @@ ENDPOINTS = (
     ("Spring MVC", "http://localhost:8081/api/demo/blocking"),
     ("Spring WebFlux", "http://localhost:8080/api/demo/non-blocking"),
 )
+MAX_REQUESTS = 600
+MAX_CONCURRENCY = 600
 
 
 def bounded_int(value, maximum):
@@ -61,15 +63,15 @@ def main():
     )
     parser.add_argument(
         "--requests",
-        type=lambda value: bounded_int(value, 300),
+        type=lambda value: bounded_int(value, MAX_REQUESTS),
         default=40,
-        help="Requests per app (1-300, default: 40)",
+        help=f"Requests per app (1-{MAX_REQUESTS}, default: 40)",
     )
     parser.add_argument(
         "--concurrency",
-        type=lambda value: bounded_int(value, 250),
+        type=lambda value: bounded_int(value, MAX_CONCURRENCY),
         default=20,
-        help="Concurrent requests (1-250, default: 20)",
+        help=f"Concurrent requests (1-{MAX_CONCURRENCY}, default: 20)",
     )
     args = parser.parse_args()
 
